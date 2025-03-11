@@ -1,0 +1,10 @@
+C:\Users\big_d\RiderProjects\MLog\MLog\bin\Debug\netstandard2.0\MLog.deps.json
+C:\Users\big_d\RiderProjects\MLog\MLog\bin\Debug\netstandard2.0\MLog.dll
+C:\Users\big_d\RiderProjects\MLog\MLog\bin\Debug\netstandard2.0\MLog.pdb
+C:\Users\big_d\RiderProjects\MLog\MLog\obj\Debug\netstandard2.0\MLog.csproj.AssemblyReference.cache
+C:\Users\big_d\RiderProjects\MLog\MLog\obj\Debug\netstandard2.0\MLog.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\big_d\RiderProjects\MLog\MLog\obj\Debug\netstandard2.0\MLog.AssemblyInfoInputs.cache
+C:\Users\big_d\RiderProjects\MLog\MLog\obj\Debug\netstandard2.0\MLog.AssemblyInfo.cs
+C:\Users\big_d\RiderProjects\MLog\MLog\obj\Debug\netstandard2.0\MLog.csproj.CoreCompileInputs.cache
+C:\Users\big_d\RiderProjects\MLog\MLog\obj\Debug\netstandard2.0\MLog.dll
+C:\Users\big_d\RiderProjects\MLog\MLog\obj\Debug\netstandard2.0\MLog.pdb

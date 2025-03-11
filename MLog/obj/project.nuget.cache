@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "i9OIHsApb2s=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\big_d\\RiderProjects\\MLog\\MLog\\MLog.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\big_d\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\big_d\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
