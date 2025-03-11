@@ -5,3 +5,5 @@ MLog is a very simple class library that writes text to files built for .NET Sta
 var mLog = new MLogBuilder().WithFilePath(filePath).WithFileName("CustomMLogFileName").Build();
 
 If no file name is specified all the log files will be called "MLog"
+
+I hope to continue working on it as time goes on!
