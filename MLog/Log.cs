@@ -49,9 +49,11 @@ namespace MLog
                 return;
             }
             
-            var oldPathName = fileInfo.FullName.Replace(".txt", string.Empty);
+            var oldPathName = fileInfo.FullName.Replace(".log", string.Empty);
             var newPath = $"{oldPathName}{creationTimeUtc:yyyyMMdd}.log";
             File.Move(path, newPath);
+            File.Create(path).Close();
+            File.SetCreationTimeUtc(path, DateTime.UtcNow);
             File.AppendAllText(path, message);
         }
     }

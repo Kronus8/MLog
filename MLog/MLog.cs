@@ -11,6 +11,11 @@
             return $"{FilePath}\\{FileName}{FileExtension}";
         }
 
+        public string GetFileExtension()
+        {
+            return FileExtension;
+        }
+
         public void Info(string message)
         {
             Log.Info(GetFileName(), message);
