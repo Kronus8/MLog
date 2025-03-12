@@ -1,6 +1,6 @@
 ﻿namespace MLog
 {
-    public class MLog
+    public class MLogger
     {
         public string FilePath { get; set; }
         public string FileName { get; set; } = "MLog";

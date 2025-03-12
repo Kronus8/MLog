@@ -4,24 +4,24 @@ namespace MLog
 {
     public class MLogBuilder
     {
-        private MLog _mLog = new MLog();
+        private readonly MLogger _mLogger = new MLogger();
 
         public MLogBuilder WithFilePath(string filePath)
         {
-            _mLog.FilePath = filePath;
+            _mLogger.FilePath = filePath;
             return this;
         }
 
         public MLogBuilder WithFileName(string fileName)
         {
-            _mLog.FileName = fileName;
+            _mLogger.FileName = fileName;
             return this;
         }
 
-        public MLog Build()
+        public MLogger Build()
         {
-            Directory.CreateDirectory(_mLog.FilePath);
-            return _mLog;
+            Directory.CreateDirectory(_mLogger.FilePath);
+            return _mLogger;
         }
     }
 }
