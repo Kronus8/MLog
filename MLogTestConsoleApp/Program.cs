@@ -1,4 +1,6 @@
-﻿using MLog;
+﻿using System;
+using System.IO;
+using MLog;
 
 namespace MLogTestConsoleApp;
 
