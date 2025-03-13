@@ -5,7 +5,6 @@ namespace MLog
 {
     public static class Logger
     {
-        // TODO: Remove line break when the log file is empty.
         private static string BuildString(string text, LogLevel? level)
         {
             return level == null
@@ -31,6 +30,10 @@ namespace MLog
             
             var fileInfo = new FileInfo(path);
             var creationTimeUtc = fileInfo.CreationTimeUtc;
+            var fileLength = fileInfo.Length;
+            
+            if (fileLength == 0)
+                message = message.Replace(Environment.NewLine, string.Empty);
 
             if (creationTimeUtc.Day == DateTime.UtcNow.Day)
             {
