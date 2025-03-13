@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 
 namespace MLog
 {
@@ -15,38 +16,47 @@ namespace MLog
         public static void Log(string path, string message, LogLevel? level = null)
         {
             var textToWrite = level == null ? BuildString(message, null) : BuildString(message, level);
-            WriteToFile(path, textToWrite);
+            WriteToLogFile(path, textToWrite);
         }
+        
+        private static bool LogFileExists(string path) => File.Exists(path);
 
-        private static void WriteToFile(string path, string message)
+        private static void GenerateLogFile(string path) => File.Create(path).Close();
+        
+        private static FileInfo GetLogFileInfo(string path) => new FileInfo(path);
+        
+        private static void WriteToFile(string path, string text) => File.AppendAllText(path, text);
+
+        private static void WriteToLogFile(string path, string text)
         {
-            var fileExists = File.Exists(path);
+            var fileExists = LogFileExists(path);
 
             if (!fileExists)
             {
-                File.Create(path).Close();
+                GenerateLogFile(path);
                 fileExists = true;
             }
-            
-            var fileInfo = new FileInfo(path);
-            var creationTimeUtc = fileInfo.CreationTimeUtc;
-            var fileLength = fileInfo.Length;
-            
-            if (fileLength == 0)
-                message = message.Replace(Environment.NewLine, string.Empty);
 
-            if (creationTimeUtc.Day == DateTime.UtcNow.Day && creationTimeUtc.Month == DateTime.UtcNow.Month && creationTimeUtc.Year == DateTime.UtcNow.Year)
+            var fileInfo = GetLogFileInfo(path);
+
+            if (fileInfo.CreationTimeUtc.ToString("yyyy-MM-dd") == DateTime.UtcNow.ToString("yyyy-MM-dd"))
             {
-                File.AppendAllText(path, message);
+                WriteToFile(path, text);
                 return;
             }
-            
+
+            RenameLogFile(path);
+            WriteToFile(path, text);
+        }
+
+        private static void RenameLogFile(string path)
+        {
+            var fileInfo = GetLogFileInfo(path);
             var oldPathName = fileInfo.FullName.Replace(".log", string.Empty);
-            var newPath = $"{oldPathName}{creationTimeUtc:yyyyMMdd}.log";
+            var newPath = $"{oldPathName}{fileInfo.CreationTimeUtc:yyyyMMdd}.log";
             File.Move(path, newPath);
             File.Create(path).Close();
             File.SetCreationTimeUtc(path, DateTime.UtcNow);
-            File.AppendAllText(path, message);
         }
     }
 }
