@@ -12,6 +12,7 @@ class Program
         var subFolderPath = Path.Combine(path, "MLogTestFolder");
         var mLog = new MLogBuilder().WithFilePath(subFolderPath).WithFileName("CustomMLogFileName").Build();
         
+        mLog.Log("Hello World!");
         mLog.Info("Hello World!");
         mLog.Error("Hello World!");
         mLog.Trace("Hello World!");

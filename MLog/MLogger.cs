@@ -6,29 +6,14 @@
         public string FileName { get; set; } = "MLog";
         private const string FileExtension = ".log"; // TODO: Add a way of getting the file extension from another class.
 
-        private string GetFileName()
-        {
-            return $"{FilePath}\\{FileName}{FileExtension}";
-        }
+        private string GetFileName() => $"{FilePath}\\{FileName}{FileExtension}";
 
-        public string GetFileExtension()
-        {
-            return FileExtension;
-        }
+        public void Log(string message) => Logger.Log(GetFileName(), message);
 
-        public void Info(string message)
-        {
-            Log.Info(GetFileName(), message);
-        }
+        public void Info(string message) => Logger.Log(GetFileName(), message, LogLevel.Info);
         
-        public void Error(string message)
-        {
-            Log.Error(GetFileName(), message);
-        }
+        public void Error(string message) => Logger.Log(GetFileName(), message, LogLevel.Error);
         
-        public void Trace(string message)
-        {
-            Log.Trace(GetFileName(), message);
-        }
+        public void Trace(string message) => Logger.Log(GetFileName(), message, LogLevel.Trace);
     }
 }

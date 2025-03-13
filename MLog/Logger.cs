@@ -3,30 +3,19 @@ using System.IO;
 
 namespace MLog
 {
-    public static class Log
+    public static class Logger
     {
         // TODO: Remove line break when the log file is empty.
-        private static string BuildString(string text, LogLevel level)
+        private static string BuildString(string text, LogLevel? level)
         {
-            var builtString = $"{Environment.NewLine}[MLOG][{level.ToString().ToUpper()}][{DateTime.Now.ToString()}]: {text}";
-            return builtString;
+            return level == null
+                ? $"{Environment.NewLine}[MLOG][{LogLevel.Trace.ToString().ToUpper()}][{DateTime.Now}]: {text}"
+                : $"{Environment.NewLine}[MLOG][{level.ToString().ToUpper()}][{DateTime.Now}]: {text}";
         }
         
-        public static void Info(string path, string message)
+        public static void Log(string path, string message, LogLevel? level = null)
         {
-            var textToWrite = BuildString(message, LogLevel.Info);
-            WriteToFile(path, textToWrite);
-        }
-        
-        public static void Error(string path, string message)
-        {
-            var textToWrite = BuildString(message, LogLevel.Error);
-            WriteToFile(path, textToWrite);
-        }
-        
-        public static void Trace(string path, string message)
-        {
-            var textToWrite = BuildString(message, LogLevel.Trace);
+            var textToWrite = level == null ? BuildString(message, null) : BuildString(message, level);
             WriteToFile(path, textToWrite);
         }
 
