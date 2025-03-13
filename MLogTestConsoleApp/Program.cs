@@ -16,5 +16,9 @@ class Program
         mLog.Info("Hello World!");
         mLog.Error("Hello World!");
         mLog.Trace("Hello World!");
+        
+        // File.Create(subFolderPath + "\\CustomMLogFileName.log").Close();
+        // File.SetCreationTimeUtc(subFolderPath + "\\CustomMLogFileName.log", new DateTime(2025, 02, 13));
+        // File.AppendAllText(subFolderPath + "\\CustomMLogFileName.log", "Test");
     }
 }
