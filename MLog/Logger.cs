@@ -35,7 +35,7 @@ namespace MLog
             if (fileLength == 0)
                 message = message.Replace(Environment.NewLine, string.Empty);
 
-            if (creationTimeUtc.Day == DateTime.UtcNow.Day)
+            if (creationTimeUtc.Day == DateTime.UtcNow.Day && creationTimeUtc.Month == DateTime.UtcNow.Month && creationTimeUtc.Year == DateTime.UtcNow.Year)
             {
                 File.AppendAllText(path, message);
                 return;
