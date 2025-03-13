@@ -4,7 +4,7 @@
     {
         public string FilePath { get; set; }
         public string FileName { get; set; } = "MLog";
-        private const string FileExtension = ".log"; // TODO: Add a way of getting the file extension from another class.
+        private const string FileExtension = ".log";
 
         private string GetFileName() => $"{FilePath}\\{FileName}{FileExtension}";
 
