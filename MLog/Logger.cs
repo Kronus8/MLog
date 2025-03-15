@@ -56,6 +56,11 @@ namespace MLog
             }
 
             var fileInfo = GetLogFileInfo(path);
+            
+            if (fileInfo.Length == 0)
+            {
+                text = text.Replace(Environment.NewLine, string.Empty);
+            }
 
             if (fileInfo.CreationTimeUtc.ToString("yyyy-MM-dd") == DateTime.UtcNow.ToString("yyyy-MM-dd"))
             {
@@ -64,6 +69,7 @@ namespace MLog
             }
 
             RenameLogFile(path);
+            text = text.Replace(Environment.NewLine, string.Empty);
             WriteToFile(path, text);
         }
 
