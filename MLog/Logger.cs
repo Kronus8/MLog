@@ -1,22 +1,40 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
 namespace MLog
 {
-    public static class Logger
+    public class Logger
     {
+        private static MLogger _mLoggerInstance;
+        
         private static string BuildString(string text, LogLevel? level)
         {
             return level == null
                 ? $"{Environment.NewLine}[MLOG][{LogLevel.Trace.ToString().ToUpper()}][{DateTime.Now}]: {text}"
                 : $"{Environment.NewLine}[MLOG][{level.ToString().ToUpper()}][{DateTime.Now}]: {text}";
         }
+
+        public Logger(MLogger loggerInstance)
+        {
+            _mLoggerInstance = loggerInstance ?? throw new ArgumentNullException(nameof(loggerInstance));
+        }
         
-        public static void Log(string path, string message, LogLevel? level = null)
+        public void Log(string path, string message, LogLevel? level = null)
         {
             var textToWrite = level == null ? BuildString(message, null) : BuildString(message, level);
             WriteToLogFile(path, textToWrite);
+
+            if (_mLoggerInstance.WriteToDebug)
+            {
+                Debug.WriteLine(textToWrite);
+            }
+
+            if (_mLoggerInstance.WriteToConsole)
+            {
+                Console.WriteLine(textToWrite);
+            }
         }
         
         private static bool LogFileExists(string path) => File.Exists(path);
@@ -27,7 +45,7 @@ namespace MLog
         
         private static void WriteToFile(string path, string text) => File.AppendAllText(path, text);
 
-        private static void WriteToLogFile(string path, string text)
+        private void WriteToLogFile(string path, string text)
         {
             var fileExists = LogFileExists(path);
 

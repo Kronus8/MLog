@@ -10,7 +10,7 @@ class Program
     {
         var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         var subFolderPath = Path.Combine(path, "MLogTestFolder");
-        var mLog = new MLogBuilder().WithFilePath(subFolderPath).WithFileName("CustomMLogFileName").Build();
+        var mLog = new MLogBuilder().WithFilePath(subFolderPath).WithFileName("CustomMLogFileName").ToDebug().ToConsole().Build();
         
         mLog.Log("Hello World!");
         mLog.Info("Hello World!");

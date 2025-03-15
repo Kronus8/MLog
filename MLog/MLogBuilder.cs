@@ -18,6 +18,18 @@ namespace MLog
             return this;
         }
 
+        public MLogBuilder ToDebug()
+        {
+            _mLogger.WriteToDebug = true;
+            return this;
+        }
+        
+        public MLogBuilder ToConsole()
+        {
+            _mLogger.WriteToConsole = true;
+            return this;
+        }
+
         public MLogger Build()
         {
             Directory.CreateDirectory(_mLogger.FilePath);
