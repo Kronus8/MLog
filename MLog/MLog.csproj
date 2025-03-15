@@ -2,6 +2,11 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <Title>MLog</Title>
+        <Authors>Kronus</Authors>
+        <Copyright>2025 Kronus8</Copyright>
+        <PackageLicenseUrl>https://github.com/Kronus8/MLog/blob/main/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/Kronus8/MLog</RepositoryUrl>
     </PropertyGroup>
 
 </Project>
